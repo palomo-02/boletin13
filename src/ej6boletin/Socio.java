@@ -10,7 +10,7 @@ public class Socio implements Comparable<Socio> {
     private LocalDate fechaAlta;
     private int cuota;  // Corregido a 'cuota' en lugar de 'couta'
     private int numeroFamiliares;
-
+private int edad;
     // Constructor
     public Socio(String nombre, String dni, LocalDate fechaNac, LocalDate fechaAlta, int cuota, int numeroFamiliares) {
         this.nombre = nombre;
