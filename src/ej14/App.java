@@ -32,11 +32,13 @@ public class App {
 			case 1 -> FiltradoPorAño();
 			case 2 -> ConversionString(sc);
 			case 3 -> OrdenarAntiguedad();
-			case 6 -> System.out.println("saliendo...");
+			
+			case 7 -> System.out.println("saliendo...");
+
 			default -> System.out.println("seleccione una opcion correcta");
 			}
 
-		} while (opcion != 6);
+		} while (opcion != 7);
 		sc.close();
 	}
 
@@ -64,7 +66,7 @@ public class App {
 
 		} else {
 
-			System.out.println("el vehiculo de la marca " + nombreBusca + "no existe en la tienda");
+			System.err.println("el vehiculo de la marca " + nombreBusca + "no existe en la tienda");
 
 		}
 
@@ -86,6 +88,8 @@ public class App {
 		System.out.println("4. filtrar por tipo de vehiculo  ");
 		System.out.println("5. Calcular consumo ");
 		System.out.println("6. Convertir la lista en un mapa por tipo ");
+		System.out.println("7. Salir ");
+
 
 	}
 
