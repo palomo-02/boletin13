@@ -32,7 +32,9 @@ public class App {
 			case 1 -> FiltradoPorAño();
 			case 2 -> ConversionString(sc);
 			case 3 -> OrdenarAntiguedad();
-			
+			case 4 -> FiltradoPorTipo(sc);
+			case 5 -> CalcularConsumo(sc);
+			case 6 -> ConvertirMapa();
 			case 7 -> System.out.println("saliendo...");
 
 			default -> System.out.println("seleccione una opcion correcta");
@@ -42,15 +44,82 @@ public class App {
 		sc.close();
 	}
 
+	private static void ConvertirMapa() {
+
+		
+		
+		
+		
+		
+		
+		
+	}
+
+	private static void CalcularConsumo(Scanner sc) {
+
+		System.out.println("inserte el nombre de la marca del vehiculo que quiere buscar");
+		String nombreBusca = sc.nextLine();
+		System.out.println("inserte los kmo");
+
+		int km = sc.nextInt();
+		Predicate<Vehiculo> buscaKm = b -> b.getMarca().equalsIgnoreCase(nombreBusca);
+
+		boolean encontrado = lista.stream().anyMatch(buscaKm);
+
+		if (encontrado) {
+
+			lista.stream().filter(buscaKm).forEach(v -> System.out.println("el consumo es " + v.getConsumo() * km));
+
+		} else {
+
+			System.err.println("el vehiculo de la marca " + nombreBusca + "no existe en la tienda");
+
+		}
+
+	}
+
+	private static void FiltradoPorTipo(Scanner sc) {
+
+		System.out.println("de que tipo de vehiculo quiere conocer los datos 1.coche 2.Moto 3.camion ");
+		int tipo = sc.nextInt();
+
+		switch (tipo) {
+
+		case 1:
+			System.out.println("los datos de los coches son: ");
+			System.out.println("-------------------------------------------- ");
+
+			lista.stream().filter(v -> v instanceof Coche).forEach(System.out::println);
+			System.out.println("-------------------------------------------- ");
+
+			break;
+		case 2:
+			System.out.println("los datos de las motos son: ");
+			System.out.println("-------------------------------------------- ");
+
+			lista.stream().filter(v -> v instanceof Moto).forEach(System.out::println);
+			System.out.println("-------------------------------------------- ");
+
+			break;
+		case 3:
+			System.out.println("los datos de los camiones son: ");
+			System.out.println("-------------------------------------------- ");
+
+			lista.stream().filter(v -> v instanceof Camion).forEach(System.out::println);
+			System.out.println("-------------------------------------------- ");
+
+			break;
+		default:
+			System.out.println("numero introducido incorrecto ");
+
+		}
+
+	}
+
 	private static void OrdenarAntiguedad() {
 
-	
-	
-	lista.stream().sorted().forEach(System.out::println);
-	
-	
-	
-	
+		lista.stream().sorted().forEach(System.out::println);
+
 	}
 
 	private static void ConversionString(Scanner sc) {
@@ -63,6 +132,8 @@ public class App {
 		boolean encontrado = lista.stream().anyMatch(busca);
 
 		if (encontrado) {
+
+			lista.stream().filter(busca).forEach(System.out::println);
 
 		} else {
 
@@ -89,7 +160,6 @@ public class App {
 		System.out.println("5. Calcular consumo ");
 		System.out.println("6. Convertir la lista en un mapa por tipo ");
 		System.out.println("7. Salir ");
-
 
 	}
 
