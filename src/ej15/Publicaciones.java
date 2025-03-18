@@ -2,7 +2,7 @@ package ej15;
 
 import java.time.LocalDate;
 
-abstract class Publicaciones {
+abstract class Publicaciones implements Comparable <Publicaciones>{
 
 	private String autor;
 
@@ -85,4 +85,20 @@ abstract class Publicaciones {
 				+ pags + "]";
 	}
 
+	
+	
+	
+	public String MostrarTituloYautor() {
+		return " El autor es: " + autor + ", y ha escrito el libro con titulo: " + titulo +"";
+	}
+	
+	
+	@Override
+	public int compareTo(Publicaciones o) {
+		// TODO Auto-generated method stub
+		return Integer.compare(this.pags, o.pags);
+	}
+	
+	
+	
 }

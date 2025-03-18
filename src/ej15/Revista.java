@@ -9,4 +9,10 @@ public class Revista extends Publicaciones{
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public int compareTo(Publicaciones o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
