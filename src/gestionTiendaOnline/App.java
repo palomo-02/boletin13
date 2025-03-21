@@ -92,6 +92,8 @@ public class App {
 			case 13:
 				System.out.println("saliendo");
 				break;
+			case 14:
+				 PrubasMap()	;			break;
 			default:
 				System.out.println("numero introducido incorrecto");
 
@@ -103,6 +105,19 @@ public class App {
 
 	}
 
+	
+	private static void PrubasMap() {
+
+
+		
+		
+		productos.stream().map(p->p.getNombre() +" ->" +p.getPrecio()+"€").forEach(System.out::println);;
+	}
+	
+	
+	
+	
+	
 	private static void ComprobarPrecioNegativo() {
 
 		Predicate<Producto> precioNegativo = p -> p.getPrecio() < 0;
@@ -132,6 +147,21 @@ public class App {
 	}
 
 	private static void mostrarPorTipo() {
+		
+		
+		System.out.println("los elementos que son ropa son: ");
+		
+		
+		productos.stream().filter(p->p instanceof Ropa).forEach(System.out::println);
+		
+		
+
+		System.out.println("los elementos que son electronicos son: ");
+		
+		
+		productos.stream().filter(p->p instanceof Electronico).forEach(System.out::println);
+		
+		
 
 	}
 
@@ -190,7 +220,22 @@ public class App {
 	}
 
 	private static void calcularPrecioPorcategoria(Scanner sc) {
+	int sumaRopa=	productos.stream().filter(p->p instanceof Ropa).mapToInt(Producto::getPrecio).sum();
 
+	int sumaElec=	productos.stream().filter(p->p instanceof Electronico).mapToInt(Producto::getPrecio).sum();
+
+	
+	System.out.println("la suma de los productos electricos es: "+sumaElec);
+	System.out.println("la suma de los productos de tipo ropa es: "+sumaRopa);
+
+	
+	
+	
+	
+	
+	
+	
+	
 	}
 
 	private static void CalcularPrecio() {
